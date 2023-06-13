@@ -11,15 +11,29 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Guides',
+          label: 'Welcome to Pinata!',
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: 'Example Guide', link: '/guides/example/' },
-          ],
+            { label: 'Introduction', link: '/'}
+          ]
         },
         {
-          label: 'Reference',
-          autogenerate: { directory: 'reference' },
+          label: 'Start Here',
+          items: [
+            { label: "What Can I Learn Here?", link: '/start-here/'},
+            { label: "Getting Started", link: '/start-here/getting-started/'},
+            { label: 'Features', items: [
+              { label: "Gateways", items: [
+                { label: "Gateways", link: '/start-here/features/gateways/gateways' },
+                { label: "The Public Pinata Gateway", link: '/start-here/features/gateways/the-public-pinata-gateway' },
+                { label: "Dedicated Gateways", link: '/start-here/features/gateways/dedicated-gateways' },
+                { label: "How do I use My Gateway?", link: '/start-here/features/gateways/how-do-i-use-my-gateway' },
+                { label: "Open vs Restricted", link: '/start-here/features/gateways/open-vs.-restricted' },
+              ]},
+              { label: 'Image Optimizations', link: '/start-here/features/image-optimization'},
+              { label: 'Rate Limits', link: '/start-here/features/rate-limits'},
+              { label: 'Video Streaming', link: '/start-here/features/video-streaming'},
+            ]}
+          ]
         },
       ],
     }),

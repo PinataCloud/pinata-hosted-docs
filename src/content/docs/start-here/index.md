@@ -1,0 +1,14 @@
+---
+title: "What Can I Learn Here?"
+description: "Our goal is to make you as happy as a bunch of pinatas frolicking amongst the hills."
+---
+
+# 🤔 What can I learn here?
+
+Whether you’re here to solve a problem, begin a new project, or just want to learn more about Pinata - we’ve got you covered.
+
+If you know what you need help with, feel free to choose from the shortcuts below. Otherwise, keep on scrolling!
+
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>For The Absolute Beginner</strong> <span data-gb-custom-inline data-tag="emoji" data-code="1f423">🐣</span></td><td>Who is Pinata? What do you do? What's our role in the web2 and web3 industries?</td><td></td></tr><tr><td><strong>For The Curious Creator</strong> <span data-gb-custom-inline data-tag="emoji" data-code="1f9d1-1f3a8">🧑🎨</span></td><td>How non-technical creators can leverage our features, tools and technologies to supercharge their media.</td><td></td></tr><tr><td><strong>For The Diligent Developer</strong> <span data-gb-custom-inline data-tag="emoji" data-code="1f469-1f4bb">👩💻</span></td><td>High-level guidance for building with Pinata. From storing, managing to distribution content — you'll find all the help you need, right here.</td><td></td></tr><tr><td><strong>For The Bold Brand/Business</strong> <span data-gb-custom-inline data-tag="emoji" data-code="1f4bc">💼</span></td><td>Sift through our technical docs for troubleshooting tips. Still having problems? Reach out to your account manager and they will connect you with our support team directly.</td><td>If you're here for a business-specific enquiry, please send an email to ________.</td></tr></tbody></table>
+
+As you go through the Pinata Docs, remember that you can always [contact our team](https://www.pinata.cloud/contact-us) if something is confusing or you don’t see your question answered. We’re always here to help.
