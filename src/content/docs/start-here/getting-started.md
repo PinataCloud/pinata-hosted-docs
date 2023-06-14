@@ -1,14 +1,12 @@
 ---
-title: "Getting Started"
+title: "🚀 Getting Started"
 description: "Setting up your Pinata account for success"
 ---
 
-# 🚀 Getting Started
-
-{% hint style="warning" %}
-**Disclaimer:**\
+:::caution
+**Disclaimer:**
 Please be aware that IPFS is a **public** network! This means anything uploaded through Pinata will be accessible by anybody on the network unless it is uploaded using the **private** file functionality.
-{% endhint %}
+:::
 
 ### 1. Sign up for a Pinata Account
 
@@ -22,7 +20,8 @@ Pinata offers developer keys for various scenarios. The most common scenario is 
 
 Here's a video tutorial on 'How To Create a Pinata API Key'.
 
-{% embed url="https://www.youtube.com/watch?v=l4vPAeBtdms" %}
+<iframe style="width:560px;height:315px;" src="https://www.youtube.com/embed/l4vPAeBtdms" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 ### 3. Set Up Your Dedicated Gateway
 

@@ -11,21 +11,22 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Welcome to Pinata!',
+          label: '🪅 Welcome to Pinata!',
           items: [
             { label: 'Introduction', link: '/' }
           ]
         },
         {
-          label: 'Start Here',
+          label: '🚀 Start Here',
           items: [
             { label: "What Can I Learn Here?", link: '/start-here/' },
             { label: "Getting Started", link: '/start-here/getting-started/' },
+            { label: "Why Pinata?", link: '/start-here/why-pinata/' },
           ]
         },
         {
-          label: 'Gateways', items: [
-            { label: "Gateways", link: '/gateways/gateways' },
+          label: '🚪 Gateways', items: [
+            { label: "What are Gateways?", link: '/gateways/' },
             { label: "The Public Pinata Gateway", link: '/gateways/the-public-pinata-gateway' },
             { label: "Dedicated Gateways", link: '/gateways/dedicated-gateways' },
             { label: "How do I use My Gateway?", link: '/gateways/how-do-i-use-my-gateway' },

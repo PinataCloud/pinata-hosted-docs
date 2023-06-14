@@ -1,10 +1,9 @@
 ---
-title: "Introduction to Pinata"
+title: "🪅 Introduction to Pinata"
 description: "Learn what Pinata is all about!"
 ---
 
-# 🪅 Introduction to Pinata
-
+![banner](../../assets/banner.png)
 ### Pinata is a web3 media and development platform, and digital transformation company.
 
 **For developers**, Pinata is the easiest way to pin content to IPFS and build web3 applications without having to build and manage your own IPFS nodes. We do all the heavy lifting for you.
