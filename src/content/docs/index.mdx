@@ -1,10 +1,33 @@
 ---
 title: "🪅 Introduction to Pinata"
 description: "Learn what Pinata is all about!"
+template: splash
+hero:
+    title: 'Welcome to Pinata!!'
+    tagline: The number one stop for creators monetizing their content
+    image:
+        alt: a picture of pinnie
+        file: ../../assets/floating-pinnie.png
+    actions:
+      - text: Get Started
+        link: /start-here/
+        icon: right-arrow
+        variant: primary
 ---
 
-![banner](../../assets/banner.png)
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+
 ### Pinata is a web3 media and development platform, and digital transformation company.
+
+<CardGrid>
+  <Card title="Take Off" icon="rocket">
+    Get Started using Pinata
+  </Card>
+  <Card title="Moons" icon="laptop">
+    Io, Europa, Ganymede
+  </Card>
+</CardGrid>
 
 **For developers**, Pinata is the easiest way to pin content to IPFS and build web3 applications without having to build and manage your own IPFS nodes. We do all the heavy lifting for you.
 
