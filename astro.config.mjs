@@ -12,6 +12,9 @@ export default defineConfig({
         twitter: 'https://twitter.com/PinataCloud',
         github: 'https://github.com/PinataCloud/pinata-hosted-docs',
       },
+      logo: {
+        src: '/src/assets/pinnie.png',
+      },
       sidebar: [
         {
           label: '🪅 Welcome to Pinata!',
