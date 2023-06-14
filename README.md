@@ -1,13 +1,19 @@
-# Starlight Starter Kit: Basics
+# Welcome to the Pinata Docs!
 
+## Running Locally
+
+To get started clone this repo, cd into it, and install dependencies
 ```
-npm create astro@latest -- --template starlight
+git clone https://github.com/PinataCloud/pinata-hosted-docs && cd pinata-hosted-docs && npm install
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
+Once installed you can run the dev server
+```
+npm run dev
+```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+For further documentation on how the repo is laid out please reference the Astro Starlight material below!
+
 
 ## 🚀 Project Structure
 
