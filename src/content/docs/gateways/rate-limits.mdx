@@ -1,16 +1,16 @@
 ---
-title: "Rate Limits"
+title: "🛑 Rate Limits"
 description: "Pinata API usage limits"
 ---
 
-# 🛑 Limits
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Rate Limits
 
 The maximum number of API requests that can be made within a certain period of time.
 
-{% tabs %}
-{% tab title="Pinata API" %}
+<Tabs>
+<TabItem label="Pinata API">
 The current rate limit of the Pinata API is **180 requests per minute** (per IP).
 
 **Exceptions:**
@@ -25,7 +25,8 @@ The following API calls have increased rate limits:
 For users with traffic that can be burst-heavy, we recommend using a task scheduler or queue-based upload approach that limits requests to the allowed amount.&#x20;
 
 For NodeJS users specifically, we recommend the [bottleneck library](https://www.npmjs.com/package/bottleneck) to help with this.
-{% endtab %}
+</TabItem>
+</Tabs>
 
 {% tab title="Public Pinata Gateway" %}
 The Pinata public IPFS gateway (gateway.pinata.cloud) is meant for testing purposes or very low volume retrieval and should not be used in production scenarios. It currently has the following rate limits:
