@@ -6,8 +6,11 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Pinata Docs',
+      customCss: ['/src/styles.css'],
       social: {
-        github: 'https://github.com/withastro/starlight',
+        discord: 'https://discord.gg/pinata',
+        twitter: 'https://twitter.com/PinataCloud',
+        github: 'https://github.com/PinataCloud/pinata-hosted-docs',
       },
       sidebar: [
         {
