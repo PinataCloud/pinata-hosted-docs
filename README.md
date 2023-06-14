@@ -1,5 +1,7 @@
 # Welcome to the Pinata Docs!
 
+This is where Pinata will soon host it's documentation to better help developers. Please contact the Community Team for more info!
+
 ## Running Locally
 
 To get started clone this repo, cd into it, and install dependencies
