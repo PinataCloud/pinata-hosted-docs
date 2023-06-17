@@ -35,11 +35,11 @@ The Pinning Services API Spec uses the Bearer Token method for authentication, a
 
 If you are running the IPFS desktop app, you can configure your pinning service of choice within the user interface. To do so, open the app, go to your Preferences, then click Add Service:&#x20;
 
-![](<../.gitbook/assets/CleanShot 2021-06-25 at 08.22.18@2x.png>)
+![Add pinning service screenshot](../../../assets/add-pinning-service.png)
 
 Select Pinata as the pinning service, and then configure with your secret access token (JWT):&#x20;
 
-![](<../.gitbook/assets/image (6).png>)
+![setup pinning service](../../../assets/setup-pinning-service.png)
 
 #### Configuring Pinata in the IPFS CLI
 
