@@ -16,11 +16,11 @@ Adding an access token restriction means that content served through your gatewa
 
 To create an access token, click on the button that says "Request Token."
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (1).png>)
+![request token](../../../assets/request-token.webp)
 
 When you create an access token you will have the ability to preview the token by clicking the "eye" icon, or copy the token to your clipboard with the "copy" icon. At any point you can delete an access token by clicking the three small dots on the right.
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (3).png>)
+![token options](../../../assets/token-options.png)
 
 Once you have the token, there are two ways you can use it in the gateway request.&#x20;
 
@@ -46,23 +46,23 @@ Another way to use the access token is in the request header. The Key Value woul
 
 You can also restrict your gateway by IP Address. You can add up to 100 different IP addresses (individually). When you add this restriction, only content requested from an IP address that you've added will be served through your gateway.&#x20;
 
-To start click "Set IP Address" on the right side of the menu.&#x20;
+To start click "Set IP Address" on the right side of the menu.
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (2).png>)
+![set ip address](../../../assets/set-ip-address.webp)
 
 You will get window asking for a valid IP Address that will allow any requests being made from the IP Address to go through!
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (5).png>)
+![enter ip address](../../../assets/enter-ip-address.webp)
 
-### Host Origin&#x20;
+### Host Origin;
 
 With the Host Origin restriction you can make sure your gateway can only be used on a specific Domain like app.pinata.cloud. To get started, click on "Add Host Origin."
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (4).png>)
+![add host origin](../../../assets/add-host-origin.png)
 
-After that you can add the domain you would like your gateway to be used from!&#x20;
+After that you can add the domain you would like your gateway to be used from!
 
-![](<../../../../.gitbook/assets/Screenshot - Brave Browser - 09-28-2022@2x (6).png>)
+![enter host origin](../../../assets/enter-host-origin.webp)
 
 Keep in mind that if you are rendering content on the client side using host origins, you will need to include a crossorigin tag in your `img`, `video`, `audio`, `link`, or `script` elements. Here is an example with an img element in React:
 
