@@ -111,10 +111,16 @@ export default defineConfig({
       }, {
         label: "Open vs Restricted",
         link: '/gateways/open-vs-restricted'
-      }, {
+      },
+      {
         label: 'Image Optimizations',
         link: '/gateways/image-optimization'
-      }, {
+      },
+      {
+        label: 'Gateway Access Controls',
+        link: '/gateways/gateway-access-controls'
+      },
+      {
         label: 'Rate Limits',
         link: '/gateways/rate-limits'
       }, {
