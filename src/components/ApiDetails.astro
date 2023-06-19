@@ -1,0 +1,45 @@
+---
+const { keys, type, value, required } = Astro.props;
+---
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .key-type-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .keys {
+    font-family: 'Roboto Mono Variable', sans-serif;
+  }
+
+  .type {
+    margin-top: 0 !important;
+    color: darkgrey;
+  }
+
+  .value {
+    margin-top: 0 !important;
+    font-size: 12px;
+  }
+</style>
+
+<div class="container">
+  <div class="key-type-container">
+  <p class="keys">{keys}<span style={{ color:
+        required === "true" ? "red" : "transparent"
+      }}>*</span></p>
+  <p class="type">{type}</p>
+  </div>
+  <p class="value">{value}</p>
+</div>
+
+

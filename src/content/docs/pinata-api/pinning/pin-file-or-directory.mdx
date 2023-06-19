@@ -1,63 +1,55 @@
 ---
 title: Pin File or Directory
 description: /pinning/pinFileToIPFS
+layout: ../../../../components/CodeBlock.astro
 ---
+import ApiEndpoint from '../../../../components/ApiEndpoint.astro'
+import ApiRequestInfo from '../../../../components/ApiRequestInfo.astro'
+import ApiDetails from '../../../../components/ApiDetails.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components'
 
-This endpoint will accept a single file or a single directory. The request must include a read stream for the payload in order for the API to accept it.&#x20;
+This endpoint will accept a single file or a single directory. The request must include a read stream for the payload in order for the API to accept it.
+Each upload can optionally include additional information beyond just the file. Both `pinataOptions` and `pinataMetadata` can be included in the request. Their formats are documented [here.](/pinata-api/pinning/)
 
-## Uploading and Pinning a Single File
+<ApiEndpoint route="pinning/pinFileToIPFS" method="POST" />
 
-Each upload can optionally include additional information beyond just the file. Both `pinataOptions` and `pinataMetadata` can be included in the request. Their formats [are documented here](./#pinata-options).
-
-{% swagger method="post" path="/pinning/pinFileToIPFS" baseUrl="https://api.pinata.cloud" summary="" expanded="true" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-parameter in="header" name="Authorization" required="true" %}
-
-
-
-
-Bearer PINATA-JWT
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="file" required="true" %}
-Read stream representing the file
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="pinataOptions" %}
-Optional stringified object
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="pinataMetadata" %}
-Optional stringified object
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
-```javascript
-{
-    IpfsHash: This is the IPFS multi-hash provided back for your content,
-    PinSize: This is how large (in bytes) the content you just pinned is,
-    Timestamp: This is the timestamp for your content pinning (represented in ISO 8601 format)
-}
-```
-{% endswagger-response %}
-{% endswagger %}
-
-{% tabs %}
-{% tab title="cURL" %}
-```bash
-curl --location --request POST 'https://api.pinata.cloud/pinning/pinFileToIPFS' \
+<ApiRequestInfo>
+  <ApiDetails slot="header" keys="Authorization" type="string" value="Your method of authorization, e.g. Bearer PINATA_API_KEY_JWT" />
+  <ApiDetails slot="body" keys="file" type="readable stream" value="File to be uploaded via multipart/form-data." required="true" />
+  <ApiDetails slot="body" keys="pinataOptions" type="object" value="Optional object for things like CID version, see pinning." />
+  <ApiDetails slot="body" keys="pinataMetadata" type="object" value="Optional object for Pinata specific metdata, such as 'name'. See pinning." />
+  <Tabs slot="responses">
+    <TabItem label="🟢 200: OK">
+      ```json
+        {
+            IpfsHash: string // This is the IPFS multi-hash provided back for your content,
+            PinSize: string // This is how large (in bytes) the content you just pinned is,
+            Timestamp: string // This is the timestamp for your content pinning (represented in ISO 8601 format),
+            isDuplicate: boolean // If you have uploaded the file before and the CID is the same it will be marked as a duplicate
+        }
+      ```
+    </TabItem>
+    <TabItem label="🛑 403: Invalid Request Format">
+      ```json
+        {
+          Invalid request format
+          //This usually happens if you are not passing in a file correctly or passing in more than one.
+        }
+      ```
+    </TabItem>
+  </Tabs>
+  <Tabs slot="code-snippets">
+    <TabItem label="cURL">
+      ```bash
+      curl --location --request POST 'https://api.pinata.cloud/pinning/pinFileToIPFS' \
 --header 'Authorization: Bearer PINATA JWT' \
 --form 'file=@"/Users/Desktop/images/cat.JPG"' \
 --form 'pinataOptions="{\"cidVersion\": 1}"' \
 --form 'pinataMetadata="{\"name\": \"MyFile\", \"keyvalues\": {\"company\": \"Pinata\"}}"'
-```
-{% endtab %}
-
-{% tab title="Node.js" %}
-```javascript
+      ```
+    </TabItem>
+    <TabItem label="Node.js">
+      ```javascript
 const axios = require('axios')
 const FormData = require('form-data')
 const fs = require('fs')
@@ -93,12 +85,10 @@ const pinFileToIPFS = async () => {
       console.log(error);
     }
 }
-
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```python
+      ```
+    </TabItem>
+    <TabItem label="Python">
+    ```python
 import requests
 
 url = "https://api.pinata.cloud/pinning/pinFileToIPFS"
@@ -116,11 +106,10 @@ response = requests.request("POST", url, headers=headers, data=payload, files=fi
 
 print(response.text)
 
-```
-{% endtab %}
-
-{% tab title="Go" %}
-```go
+    ```
+    </TabItem>
+    <TabItem label="Go">
+    ```go
 package main
 
 import (
@@ -184,9 +173,11 @@ func main() {
   }
   fmt.Println(string(body))
 }
-```
-{% endtab %}
-{% endtabs %}
+    ```
+    </TabItem>
+  </Tabs>
+</ApiRequestInfo>
+
 
 ## Uploading and Pinning a Directory
 
@@ -194,7 +185,7 @@ This endpoint also allows users to pin an entire directory to IPFS. This works a
 
 However, our servers will use the exact path that's provided for each file, so it's important that each path begins with the "base" directory that is being uploaded. As an example, if your directory is located at "./../myBuilds/desiredBuild" on your local machine, then each file path should start with "desiredBuild".
 
-We have a JavaScript example of uploading a directory below. Note that in the example, we use the `got` library instead of `axios`, but the same general procedure can be applied using `axios` or any other library.&#x20;
+We have a JavaScript example of uploading a directory below. Note that in the example, we use the `got` library instead of `axios`, but the same general procedure can be applied using `axios` or any other library.
 
 ```javascript
 const fs = require("fs");
@@ -234,16 +225,16 @@ const pinDirectoryToPinata = async () => {
 };
 ```
 
-## Uploading Implementations&#x20;
+## Uploading Implementations
 
-Depending on your use case there are lots of different ways you can implement the API. Here's a few ways that we have seen are popular!&#x20;
+Depending on your use case there are lots of different ways you can implement the API. Here's a few ways that we have seen are popular!
 
 ### React
 
-With these React gists we would like to remind users that **using API keys on the client side is not secure.** It's typically a better practice to have your own backend where the keys are stored, but in some cases users see the need to upload through the client side. Feel free to use these components!&#x20;
+With these React gists we would like to remind users that **using API keys on the client side is not secure.** It's typically a better practice to have your own backend where the keys are stored, but in some cases users see the need to upload through the client side. Feel free to use these components!
 
-{% tabs %}
-{% tab title="FileUpload" %}
+<Tabs>
+<TabItem label="File Upload">
 ```jsx
 import { useState } from "react"
 import axios from "axios"
@@ -298,9 +289,9 @@ const FileUpload = () => {
 
 export default FileUpload
 ```
-{% endtab %}
+</TabItem>
 
-{% tab title="FolderUpload" %}
+<TabItem label="Folder Upload">
 ```jsx
 import { useState } from "react"
 import axios from "axios"
@@ -317,7 +308,6 @@ const FolderUpload = () => {
   const handleSubmission = async() => {
 
     const formData = new FormData();
-
     Array.from(selectedFile).forEach((file) => {
       formData.append("file", file)
     })
@@ -357,20 +347,21 @@ const FolderUpload = () => {
 
 export default FolderUpload
 ```
-{% endtab %}
-{% endtabs %}
+</TabItem>
+</Tabs>
 
-### Upload from Buffer
+### Uploading Buffer
 
-There are some cases where it's handy to upload from a buffer rather than disk. Here is an example of how you can do that!&#x20;
+There are some cases where it's handy to upload from a buffer rather than a readable stream. The main thing you need to do to make this work is to add a ```filepath``` to the multipart/form-data. Here is an example of how you can do that!
 
-<pre class="language-javascript"><code class="lang-javascript">const { Readable } = require("stream");
+```javascript
+const { Readable } = require("stream");
 const FormData = require("form-data");
 const axios = require("axios");
 const JWT = `Bearer PASTE_YOUR_JWT`
 
-<strong>const uploadFromBuffer = async (buffer) => {
-</strong>  try {
+const uploadFromBuffer = async (buffer) => {
+  try {
     const stream = Readable.from(buffer);
     const data = new FormData();
     data.append('file', stream, {
@@ -390,9 +381,42 @@ const JWT = `Bearer PASTE_YOUR_JWT`
     console.log(error);
   }
 }
-</code></pre>
+```
 
 This opens a lot of possibilities as to what you can pass into that buffer. For instance, here is how you could upload a string of text to Pinata!
+
+```javascript
+const { Readable } = require("stream");
+const FormData = require("form-data");
+const axios = require("axios");
+const JWT = `Bearer PASTE_YOUR_JWT`
+
+const uploadFromBuffer = async (buffer) => {
+  try {
+    const stream = Readable.from(buffer);
+    const data = new FormData();
+    data.append('file', stream, {
+      filepath: 'FILENAME.png'
+    })
+
+    const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", data, {
+      maxBodyLength: "Infinity",
+      headers: {
+          'Content-Type': `multipart/form-data; boundary=${data._boundary}`,
+          Authorization: JWT
+      }
+    });
+
+    console.log(res.data);
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
+### Uploading Blobs
+
+By implementing the use of ```filepath``` in our multpart/form-data we can also upload blobs as seen in the example below.
 
 ```javascript
 const { Readable } = require('stream');
@@ -400,12 +424,11 @@ const FormData = require('form-data')
 const axios = require('axios');
 const JWT = 'Bearer PASTE_YOUR_PINATA_JWT'
 
-const pinStringToIPFS = async (string) => {
+const pinStringBlobToIPFS = async (string) => {
   try {
-   const buffer = Buffer.from(string, 'utf8')
-   const stream = Readable.from(buffer)
+   const blob = new Blob([string], { type: 'text/plain '})
    const data = new FormData()
-   data.append('file', stream, {
+   data.append('file', blob, {
       filepath: "string.txt"
     })
    const res = await axios.post("https://api.pinata.cloud/pinning/pinFileToIPFS", data, {
@@ -419,7 +442,7 @@ const pinStringToIPFS = async (string) => {
   }
 }
 
-pinStringToIPFS("Hello World!!")
+pinStringBlobToIPFS("Hello World!!")
 ```
 
 ### Upload From URL Stream
@@ -461,4 +484,3 @@ const uploadToPinata = async (sourceUrl) => {
 
 uploadToPinata("https://example.com/1.png")
 ```
-

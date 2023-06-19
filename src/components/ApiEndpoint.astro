@@ -1,0 +1,44 @@
+---
+const { route, method } = Astro.props;
+---
+
+<style>
+  .container{
+    font-family: monospace;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    background-color: #181818;
+    border-radius: 5px;
+  }
+  #bold {
+    font-weight: bold;
+    color: white;
+  }
+
+ .method {
+    border-radius: 5px;
+    padding: 2px 10px;
+  }
+  .base {
+    margin: 0 !important;
+    color: grey;
+  }
+</style>
+
+<div class="container">
+  <p class="method" style={{ backgroundColor:
+    method === "POST" ? "#1aabff" :
+    method === "GET" ? "#07b871" :
+    method === "PUT" ? "#f46d2b" :
+    method === "DELETE" ? "#f05152" :
+      "transparent"
+    }}>
+    {method}
+  </p>
+  <p class="base">https://api.pinata.cloud<span id="bold">/{route}</span></p>
+</div>
+

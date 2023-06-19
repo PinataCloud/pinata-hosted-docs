@@ -13,3 +13,22 @@ body {
 .sidebar {
   background-color: #181818;
 }
+
+.copy-code {
+  position: absolute;
+  top: -0.75rem;
+  right: 1rem;
+  background-color: #23272e;
+  border: 0.5px solid white;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-radius: 5px;
+  font-family: sans-serif;
+}
+
+.copy-code:hover {
+  background-color: #23272e;
+  border: 1px solid white;
+}
+

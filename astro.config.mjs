@@ -5,9 +5,14 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula-soft'
+    },
+  },
   integrations: [starlight({
     title: 'Pinata Docs',
-    customCss: ['/src/styles.css'],
+    customCss: ['/src/styles.css', '@fontsource-variable/roboto-mono'],
     social: {
       discord: 'https://discord.gg/pinata',
       twitter: 'https://twitter.com/PinataCloud',
