@@ -15,6 +15,7 @@ body {
 }
 
 .copy-code {
+  display: none;
   position: absolute;
   top: -0.75rem;
   right: 1rem;
@@ -25,6 +26,10 @@ body {
   line-height: 1rem;
   border-radius: 5px;
   font-family: sans-serif;
+}
+
+.copy-code.active {
+  display: block;
 }
 
 .copy-code:hover {
