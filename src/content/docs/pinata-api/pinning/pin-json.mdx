@@ -1,7 +1,13 @@
 ---
 title: Pin JSON
 description: /pinning/pinJSONToIPFS
+layout: ../../../../components/CodeBlock.astro
 ---
+import ApiEndpoint from '../../../../components/ApiEndpoint.astro'
+import ApiRequestInfo from '../../../../components/ApiRequestInfo.astro'
+import ApiDetails from '../../../../components/ApiDetails.astro'
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { pinJSONToIPFS }  from "../../../../data/api-pinata-cloud-data.js"
 
 This endpoint allows the sender to add and pin any JSON object they wish to Pinata's IPFS nodes. This endpoint is specifically optimized to only handle JSON content. Once the server receives the JSON, it is converted into a JSON file and pinned to our IPFS storage nodes.&#x20;
 
@@ -9,42 +15,29 @@ This endpoint allows the sender to add and pin any JSON object they wish to Pina
 
 Each upload can optionally include additional information beyond just the file. Both `pinataOptions` and `pinataMetadata` can be included in the request. Their formats [are documented here](./#pinata-options).
 
-{% swagger method="post" path="/pinning/pinJSONToIPFS" baseUrl="https://api.pinata.cloud" summary="" expanded="true" %}
-{% swagger-description %}
+<ApiEndpoint data={pinJSONToIPFS} />
 
-{% endswagger-description %}
-
-{% swagger-parameter in="header" name="Authorization" required="true" %}
-Bearer PINATA-JWT
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="pinataOptions" required="false" %}
-Optional Pinata Options object
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="pinataMetadata" %}
-Optional Pinata Metadata object
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" name="pinataContent" required="true" %}
-The JSON content to pin
-{% endswagger-parameter %}
-
-{% swagger-response status="200: OK" description="" %}
-```javascript
-{
-    IpfsHash: This is the IPFS multi-hash (CID) provided back for your content,
-    PinSize: This is how large (in bytes) the content you just pinned is,
-    Timestamp: This is the timestamp for your content pinning (represented in ISO 8601 format)
-}
-```
-{% endswagger-response %}
-{% endswagger %}
-
-{% tabs %}
-{% tab title="cURL" %}
-```bash
-curl --location --request POST 'https://api.pinata.cloud/pinning/pinJSONToIPFS' \
+<ApiRequestInfo>
+  <ApiDetails slot="header" data={pinJSONToIPFS.headers} />
+  <ApiDetails slot="body" data={pinJSONToIPFS.body.pinataContent} />
+  <ApiDetails slot="body" data={pinJSONToIPFS.body.pinataOptions} />
+  <ApiDetails slot="body" data={pinJSONToIPFS.body.pinataMetadata} />
+  <Tabs slot="responses">
+    <TabItem label="🟢 200: OK">
+      ```json
+      {
+          IpfsHash: string, // This is the IPFS multi-hash (CID) provided back for your content,
+          PinSize: string, // This is how large (in bytes) the content you just pinned is,
+          Timestamp: string, // This is the timestamp for your content pinning (represented in ISO 8601 format)
+          isDuplicate: boolean // If you have uploaded the file before and the CID is the same it will be marked as a duplicate
+      }
+      ```
+    </TabItem>
+  </Tabs>
+  <Tabs slot="code-snippets">
+    <TabItem label="cURL">
+      ```bash
+      curl --location --request POST 'https://api.pinata.cloud/pinning/pinJSONToIPFS' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer PINATA JWT' \
 --data-raw '{
@@ -62,12 +55,11 @@ curl --location --request POST 'https://api.pinata.cloud/pinning/pinJSONToIPFS' 
         "somekey":"somevalue"
     }
 }'
-```
-{% endtab %}
-
-{% tab title="Node.js" %}
-```javascript
-var axios = require('axios');
+      ```
+    </TabItem>
+    <TabItem label="Node.js">
+      ```javascript
+      var axios = require('axios');
 var data = JSON.stringify({
   "pinataOptions": {
     "cidVersion": 1
@@ -97,11 +89,10 @@ var config = {
 const res = await axios(config);
 
 console.log(res.data);
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```python
+      ```
+    </TabItem>
+    <TabItem label="Python">
+    ```python
 import requests
 import json
 
@@ -131,12 +122,11 @@ response = requests.request("POST", url, headers=headers, data=payload)
 
 print(response.text)
 
-```
-{% endtab %}
-
-{% tab title="Go" %}
-```go
-package main
+    ```
+    </TabItem>
+    <TabItem label="Go">
+    ```go
+    package main
 
 import (
   "fmt"
@@ -192,6 +182,8 @@ func main() {
   }
   fmt.Println(string(body))
 }
-```
-{% endtab %}
-{% endtabs %}
+    ```
+    </TabItem>
+  </Tabs>
+</ApiRequestInfo>
+

@@ -1,5 +1,5 @@
 ---
-const { route, method } = Astro.props;
+const { data } = Astro.props;
 ---
 
 <style>
@@ -33,14 +33,14 @@ const { route, method } = Astro.props;
 
 <div class="container">
   <p class="method" style={{ backgroundColor:
-    method === "POST" ? "#1aabff" :
-    method === "GET" ? "#07b871" :
-    method === "PUT" ? "#f46d2b" :
-    method === "DELETE" ? "#f05152" :
+    data.method === "POST" ? "#1aabff" :
+    data.method === "GET" ? "#07b871" :
+    data.method === "PUT" ? "#f46d2b" :
+    data.method === "DELETE" ? "#f05152" :
       "transparent"
     }}>
-    {method}
+    {data.method}
   </p>
-  <p class="base">https://api.pinata.cloud<span id="bold">/{route}</span></p>
+  <p class="base">{data.base}<span id="bold">{data.route}</span></p>
 </div>
 

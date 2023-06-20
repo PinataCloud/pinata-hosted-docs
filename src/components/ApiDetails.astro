@@ -1,5 +1,5 @@
 ---
-const { keys, type, value, required } = Astro.props;
+const { data } = Astro.props;
 ---
 
 <style>
@@ -34,12 +34,12 @@ const { keys, type, value, required } = Astro.props;
 
 <div class="container">
   <div class="key-type-container">
-  <p class="keys">{keys}<span style={{ color:
-        required === "true" ? "red" : "transparent"
+  <p class="keys">{data.keys}<span style={{ color:
+        data.required === true ? "red" : "transparent"
       }}>*</span></p>
-  <p class="type">{type}</p>
+  <p class="type">{data.type}</p>
   </div>
-  <p class="value">{value}</p>
+  <p class="value">{data.value}</p>
 </div>
 
 

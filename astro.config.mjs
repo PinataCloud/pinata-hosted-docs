@@ -61,10 +61,16 @@ export default defineConfig({
         }, {
           label: "Pin by CID",
           link: '/pinata-api/pinning/pin-by-cid/'
-        }, {
+        },
+        {
+          label: "List Pin By CID Jobs",
+          link: '/pinata-api/pinning/list-pin-by-cid-jobs'
+        },
+        {
           label: "Remove (Unpin) Files",
           link: '/pinata-api/pinning/remove-files-unpin/'
-        }, {
+        },
+        {
           label: "Update Pinata Metadata",
           link: '/pinata-api/pinning/update-metadata/'
         },

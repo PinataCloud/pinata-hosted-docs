@@ -7,24 +7,25 @@ import ApiEndpoint from '../../../../components/ApiEndpoint.astro'
 import ApiRequestInfo from '../../../../components/ApiRequestInfo.astro'
 import ApiDetails from '../../../../components/ApiDetails.astro'
 import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { pinFileToIPFS }  from "../../../../data/api-pinata-cloud-data.js"
 
 This endpoint will accept a single file or a single directory. The request must include a read stream for the payload in order for the API to accept it.
 Each upload can optionally include additional information beyond just the file. Both `pinataOptions` and `pinataMetadata` can be included in the request. Their formats are documented [here.](/pinata-api/pinning/)
 
-<ApiEndpoint route="pinning/pinFileToIPFS" method="POST" />
+<ApiEndpoint data={pinFileToIPFS} />
 
 <ApiRequestInfo>
-  <ApiDetails slot="header" keys="Authorization" type="string" value="Your method of authorization, e.g. Bearer PINATA_API_KEY_JWT" />
-  <ApiDetails slot="body" keys="file" type="readable stream" value="File to be uploaded via multipart/form-data." required="true" />
-  <ApiDetails slot="body" keys="pinataOptions" type="object" value="Optional object for things like CID version, see pinning." />
-  <ApiDetails slot="body" keys="pinataMetadata" type="object" value="Optional object for Pinata specific metdata, such as 'name'. See pinning." />
+  <ApiDetails slot="header" data={pinFileToIPFS.headers} />
+  <ApiDetails slot="body" data={pinFileToIPFS.body.file} />
+  <ApiDetails slot="body" data={pinFileToIPFS.body.pinataOptions} />
+  <ApiDetails slot="body" data={pinFileToIPFS.body.pinataMetadata} />
   <Tabs slot="responses">
     <TabItem label="🟢 200: OK">
       ```json
         {
-            IpfsHash: string // This is the IPFS multi-hash provided back for your content,
-            PinSize: string // This is how large (in bytes) the content you just pinned is,
-            Timestamp: string // This is the timestamp for your content pinning (represented in ISO 8601 format),
+            IpfsHash: string, // This is the IPFS multi-hash provided back for your content,
+            PinSize: string, // This is how large (in bytes) the content you just pinned is,
+            Timestamp: string, // This is the timestamp for your content pinning (represented in ISO 8601 format),
             isDuplicate: boolean // If you have uploaded the file before and the CID is the same it will be marked as a duplicate
         }
       ```
