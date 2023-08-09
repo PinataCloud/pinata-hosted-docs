@@ -7,7 +7,7 @@ description: "All things gateways"
 
 
 
-All of Pinata's content is avalable on the public IPFS network. This means that anybody running an IPFS node can access content stored on Pinata through their own IPFS node.
+All of Pinata's content is available on the public IPFS network. This means that anybody running an IPFS node can access content stored on Pinata through their own IPFS node.
 
 However, directly running a node isn't the only way to access content, nor is it the easiest. The most common way to retrieve content on the IPFS network is through an IPFS gateway.
 
