@@ -55,4 +55,4 @@ Once your file has successfully been uploaded, you will receive this message at 
 
 **Voila! Your file is now uploaded to IPFS. It will be stored right on your Pinata dashboard for easy access.**
 
-Once your file is pinned, then you have a few options of what to do next from your dashboard. Let’s look into a few.
+Once your file is pinned, then you have a few options for what to do next from your dashboard. Let’s look into a few.
