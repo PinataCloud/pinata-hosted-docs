@@ -7,7 +7,7 @@ description: "Pinata Darkroom Functionality"
 
 ### Pinata Image Optimization
 
-Pinata image optimizations provides image optimization functionality directly through your [Dedicated Gateway](broken-reference). These capabilities that can significantly improve the load time and experience when viewing image content.
+Pinata image optimizations provides image optimization functionality directly through your [Dedicated Gateway](broken-reference). These capabilities can significantly improve the load time and experience when viewing image content.
 
 Any image you have uploaded can be manipulated with query string parameters. ‌The query string options are defined below. ‌&#x20;
 
